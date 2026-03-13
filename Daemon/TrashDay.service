@@ -1,0 +1,12 @@
+#Destination
+#/etc/systemd/system
+
+[Service]
+User=lukas
+Group=users
+EnvironmentFile=/opt/trashDay/.env
+ExecStart=/opt/trashDay/.env/bin/python /opt/trashDay/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
