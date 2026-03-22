@@ -1,0 +1,33 @@
+name: Remote Deployment
+
+# Trigger: Nur bei einem Push auf den master-Branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deployTrashService:
+    # Hier sagen wir GitHub, dass der eigene Runner genutzt werden soll
+    runs-on: self-hosted
+
+    steps:
+      # 1. Schritt: Den aktuellen Code aus dem Repo in das Runner-Verzeichnis holen
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Schritt: Dateien an definierte Verzeichnisse verteilen
+      #TODO
+      - name: Copy files to destination
+        run: |
+          #echo "Kopiere Dateien..."
+          #cp -r ./web-app/* /var/www/my-project/
+          #cp ./configs/server.conf /etc/myapp/config/
+
+      # 3. Schritt: Kommandozeilen-Befehle ausführen
+      - name: Execute commands
+        run: |
+          #echo "Starte Dienste neu..."
+          #cd /var/www/my-project
+          # Beispiel für Befehle:
+          # npm install --production
+          # systemctl restart my-service
